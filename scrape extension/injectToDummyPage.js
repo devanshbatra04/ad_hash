@@ -113,6 +113,7 @@ if(window.location.href==displayWebsiteURL) {
           itemsList = obj.listOfItems;
         }
         console.log(itemsList.length)
+        JSON_data.landingPageURL = window.location.href;
         itemsList.push(JSON_data);
         chrome.storage.local.set({ 'listOfItems': itemsList}, () => {
           console.log('done', itemsList);
