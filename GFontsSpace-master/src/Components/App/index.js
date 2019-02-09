@@ -23,11 +23,12 @@ class App extends Component {
     console.log(web3.version);
     contract.methods.user().call().then(console.log);
     const accounts = await web3.eth.getAccounts();
-    console.log(await contract.methods.productsViewed(1).call());
-    // console.log(await contract.methods.addData("amazon", "watch", "hello", "hello1").send({
-    //   from : accounts[0]
-    // }));
-
+    JSON.parse(localStorage.getItem('browsingHistoryUser')).listOfItems.forEach((d)=>{
+      console.log(d);
+      
+    });
+    // console.log(await contract.methods.productsViewed(1).call());
+    
     this.props.fetchData();
   }
 
