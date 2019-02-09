@@ -1,4 +1,5 @@
-const displayWebsiteURL = 'https://github.com/himanish-star'
+const displayWebsiteURL = 'http://localhost:3000/'
+console.log(window.location.href)
 
 function isEmpty(obj) {
   for(var key in obj) {
