@@ -18,9 +18,16 @@ class App extends Component {
     this.handleClickOnControlBtn = this.handleClickOnControlBtn.bind(this);
   }
 
-  componentDidMount() {
+   async componentDidMount() {
     console.log("hello");
-    
+    console.log(web3.version);
+    contract.methods.user().call().then(console.log);
+    const accounts = await web3.eth.getAccounts();
+    console.log(await contract.methods.productsViewed(1).call());
+    // console.log(await contract.methods.addData("amazon", "watch", "hello", "hello1").send({
+    //   from : accounts[0]
+    // }));
+
     this.props.fetchData();
   }
 
@@ -47,13 +54,13 @@ class App extends Component {
             </section>
           </div>
         }
-        </div>
+      </div>
     );
   }
 }
 
-console.log(web3.version);
-contract.methods.user().call().then(console.log);
+
+// contract.methods.addData().call("amazon","watch","hello","hello1").then(console.log);
 function mapStateToProps(state) {
   return {
     userSelectedTextBox: state.GFontsReducer.userSelectedTextBox,
