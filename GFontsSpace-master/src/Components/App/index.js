@@ -7,7 +7,7 @@ import TextBoxContainer from './../TextBoxContainer';
 import Loader from './../Loader';
 import Header from './../Header';
 import './App.css';
-
+import web3 from '../../ethereum-connect/web3';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log("hello");
+    
     this.props.fetchData();
   }
 
@@ -49,41 +51,7 @@ class App extends Component {
   }
 }
 
-class App_2 extends React.Component {
-    state = {
-        company_name: 'Company Name',
-        product_name: 'Product Name',
-        ad_link: 'https://www.google.co.in',
-        photo_link: 'https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
-    }
-    set_bg_img = () => {
-        setTimeout(() => {
-            let alpha = 'url(' + this.state.photo_link + ')' + ''
-            document.getElementById("app_bg").style.backgroundImage = alpha
-            console.log(alpha)
-        }, 2000)
-    }
-
-    render(){
-        //
-        this.set_bg_img()
-        return(
-            `<a href={this.state.ad_link} target="_blank">
-            <div className="card text-center hell" >
-            <div className="card-header">
-            {this.state.product_name}
-            </div>
-        <div className="card-body" id="app_bg">
-
-            </div>
-            <div className="card-footer text-muted">
-            {this.state.company_name}
-    </div>
-        </div>
-        </a>`
-        )
-    }
-}
+console.log(web3.version);
 
 function mapStateToProps(state) {
   return {
