@@ -1,5 +1,7 @@
 import web3 from './web3';
-const address = '0x404314bb8f6eaad7be0398dda9f2c9a9a5570f87';
+
+const address = '0x4e1b652e981c71da5749ce184925219db45ae47f';
+
 const ABI = [
   {
       "constant": false,
@@ -38,6 +40,31 @@ const ABI = [
   },
   {
       "constant": false,
+      "inputs": [
+          {
+              "name": "index",
+              "type": "uint256"
+          }
+      ],
+      "name": "updateNode",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "name": "n",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+  },
+  {
+      "constant": true,
       "inputs": [],
       "name": "getData",
       "outputs": [
@@ -73,33 +100,22 @@ const ABI = [
           }
       ],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
   },
   {
-      "constant": false,
-      "inputs": [
+      "constant": true,
+      "inputs": [],
+      "name": "getDataString",
+      "outputs": [
           {
-              "name": "index",
-              "type": "uint256"
+              "name": "",
+              "type": "string"
           }
       ],
-      "name": "updateNode",
-      "outputs": [],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
-  },
-  {
-      "inputs": [
-          {
-              "name": "n",
-              "type": "uint256"
-          }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
   },
   {
       "constant": true,
@@ -216,7 +232,5 @@ const ABI = [
       "stateMutability": "view",
       "type": "function"
   }
-]
-
-
+];
 export default new web3.eth.Contract(ABI, address);
