@@ -18,17 +18,26 @@ class App extends Component {
     this.handleClickOnControlBtn = this.handleClickOnControlBtn.bind(this);
   }
 
-   async componentDidMount() {
+  async componentDidMount() {
     console.log("hello");
     console.log(web3.version);
     contract.methods.user().call().then(console.log);
     const accounts = await web3.eth.getAccounts();
-    JSON.parse(localStorage.getItem('browsingHistoryUser')).listOfItems.forEach((d)=>{
-      console.log(d);
-      
-    });
-    // console.log(await contract.methods.productsViewed(1).call());
-    
+    setTimeout(async () => {
+      let data = JSON.parse(localStorage.getItem('browsingHistoryUser'));
+      localStorage.setItem('browsingHistoryUser', JSON.stringify({ listOfItems: [] }));
+
+      await data.listOfItems.forEach(async (d) => {
+        await contract.methods.addData(d.provider, d.title, d.imageUrl, d.landingPageURL).send({
+          from: accounts[0]
+        })
+      });
+
+      let nextAd = await contract.methods.nextAd().call();
+      console.log(nextAd);
+    }, 1000);
+    // console.log(await contract.methods.productsViewed(2).call());
+
     this.props.fetchData();
   }
 
