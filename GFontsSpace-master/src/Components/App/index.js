@@ -9,6 +9,7 @@ import Header from './../Header';
 import './App.css';
 import web3 from '../../ethereum-connect/web3';
 import contract from '../../ethereum-connect/contract';
+// import App_ad from '../../../public/index.html'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +20,6 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    console.log("hello");
-    console.log(web3.version);
-    contract.methods.user().call().then(console.log);
     const accounts = await web3.eth.getAccounts();
     setTimeout(async () => {
       let data = JSON.parse(localStorage.getItem('browsingHistoryUser'));
@@ -34,9 +32,8 @@ class App extends Component {
       });
 
       let nextAd = await contract.methods.nextAd().call();
-      console.log(nextAd);
-    }, 1000);
-    // console.log(await contract.methods.productsViewed(2).call());
+      localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: [nextAd] }));
+    }, 2000);
 
     this.props.fetchData();
   }
@@ -70,7 +67,6 @@ class App extends Component {
 }
 
 
-// contract.methods.addData().call("amazon","watch","hello","hello1").then(console.log);
 function mapStateToProps(state) {
   return {
     userSelectedTextBox: state.GFontsReducer.userSelectedTextBox,
