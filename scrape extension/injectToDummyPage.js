@@ -104,7 +104,7 @@ if(window.location.href==displayWebsiteURL) {
     localStorage.setItem('browsingHistoryUser', JSON.stringify(obj));
   })
   chrome.storage.local.set({ 'listOfItems': []}, () => {
-    console.log('done', itemsList);
+    console.log('done', []);
   });
 } else {
   chrome.storage.local.get('listOfItems', function (obj) {
