@@ -8,6 +8,7 @@ import Loader from './../Loader';
 import Header from './../Header';
 import './App.css';
 import web3 from '../../ethereum-connect/web3';
+import contract from '../../ethereum-connect/contract';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +53,7 @@ class App extends Component {
 }
 
 console.log(web3.version);
-
+contract.methods.user().call().then(console.log);
 function mapStateToProps(state) {
   return {
     userSelectedTextBox: state.GFontsReducer.userSelectedTextBox,
