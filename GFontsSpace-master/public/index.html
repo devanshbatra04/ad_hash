@@ -67,7 +67,7 @@
                     let gamma = 'url(' + this.state.photo_link_3 + ')' + ''
                     document.getElementById("app_bg_3").style.backgroundImage = gamma
                     this.new_ad()
-                }, 7500)
+                }, 1500)
 
             }
             change_Ad = (ad) => {
@@ -77,8 +77,8 @@
                   localStorage.setItem('iteration',-1)
                 }
                 let i=localStorage.getItem('iteration')
-                i+=1;
-                localStorage.setItem('iteration',i+2)
+                i=parseInt(i) + 1;
+                localStorage.setItem('iteration',parseInt(i)+2)
                 this.setState({
                     company_name_1:obje[i%lenT].provider,
                     product_name_1:obje[i%lenT].title,
