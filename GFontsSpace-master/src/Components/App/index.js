@@ -9,7 +9,6 @@ import Header from './../Header';
 import './App.css';
 import web3 from '../../ethereum-connect/web3';
 import contract from '../../ethereum-connect/contract';
-// import App_ad from '../../../public/index.html'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,12 +30,18 @@ class App extends Component {
         })
       });
 
-      let nextAd = await contract.methods.nextAd().call();
-      localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: [nextAd] }));
-    }, 2000);
 
+
+    }, 2000);
+      setInterval(async ()=>{
+          let nextAd = await contract.methods.nextAd().call();
+          localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: [nextAd] }));
+          console.log(nextAd)
+      }, 4000)
     this.props.fetchData();
   }
+
+
 
   handleClickOnControlBtn() {
     this.setState({ isHideControl: !this.state.isHideControl });
@@ -86,4 +91,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-// export default App_2
