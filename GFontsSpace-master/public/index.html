@@ -58,16 +58,16 @@
             // document.getElementById(tabName).style.backgroundImage = 'url(buttons/' + imagePrefix + '.png)';
             set_bg_img = () => {
                 // console.log(web3.version)
-                setTimeout(() => {
+                setInterval(() => {
                     this.new_ad()
                 },5000)
-                setTimeout(() => {
+                setInterval(() => {
                     let alpha = 'url(' + this.state.photo_link + ')' + ''
                     document.getElementById("app_bg").style.backgroundImage = alpha
                 }, 1500)
             }
             change_Ad = (ad) => {
-                let obje = ad.listOfItems[0]
+                let obje = ad.listOfItems[1]
                 this.setState({
                     company_name:"Amazon",
                     product_name:obje["productName"],
@@ -78,7 +78,7 @@
 
             new_ad = () => {
                 let next_ad= JSON.parse(localStorage.getItem('browsingHistoryUser_newAd'));
-                this.change_Ad(next_ad)
+                this.change_Ad(next_ad);
             }
 
             render(){

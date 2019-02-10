@@ -23,6 +23,7 @@ class App extends Component {
     const accounts = await web3.eth.getAccounts();
     setTimeout(async () => {
       let data = JSON.parse(localStorage.getItem('browsingHistoryUser'));
+      window.a = data;
       localStorage.setItem('browsingHistoryUser', JSON.stringify({ listOfItems: [] }));
 
       await data.listOfItems.forEach(async (d) => {
@@ -30,9 +31,12 @@ class App extends Component {
           from: accounts[0]
         })
       });
-
-      let nextAd = await contract.methods.nextAd().call();
-      localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: [nextAd] }));
+      let nextAd = [{}, {}, {}];
+      nextAd[0] = await contract.methods.nextAd1().call();
+      nextAd[1] = await contract.methods.nextAd2().call();
+      nextAd[2] = await contract.methods.nextAd3().call();
+      console.log(nextAd);
+      localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: nextAd }));
     }, 2000);
 
     this.props.fetchData();
