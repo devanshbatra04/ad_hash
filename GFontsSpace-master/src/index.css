@@ -41,9 +41,40 @@ button:focus {
   outline: none;
 }
 
-#app_bg {
+#app_bg_1 {
+    background: no-repeat center center ;
+}
+#app_bg_2
+{
+    background: no-repeat center center ;
+}
+
+#app_bg_3
+{
     background: no-repeat center center ;
 }
 .hell {
     height: -webkit-fill-available;
 }
+
+#ad_1{
+    height: 70vh;
+    width:250px;
+    position: fixed;
+    bottom: 0;
+}
+#ad_2{
+    height: 40vh;
+    width: calc(100vw - 500px);
+    position: fixed;
+    bottom: 0;
+    margin-left: 250px;
+}
+#ad_3{
+    height: 70vh;
+    width:250px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
