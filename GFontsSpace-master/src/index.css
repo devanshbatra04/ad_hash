@@ -16,10 +16,12 @@ body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+    background: url("image1.png") no-repeat center center;
+
 }
 
 body * {
-  /* transition: all .3s ease-out; */
+   transition: all .5s ease-out;
   line-height: 0.9;
 }
 

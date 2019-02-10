@@ -58,6 +58,7 @@
             set_bg_img = () => {
 
                 setTimeout(() => {
+                    this.new_ad()
                     let alpha = 'url(' + this.state.photo_link_1 + ')' + ''
                     document.getElementById("app_bg_1").style.backgroundImage = alpha
 
@@ -66,8 +67,8 @@
 
                     let gamma = 'url(' + this.state.photo_link_3 + ')' + ''
                     document.getElementById("app_bg_3").style.backgroundImage = gamma
-                    this.new_ad()
-                }, 1500)
+
+                }, 4500)
 
             }
             change_Ad = (ad) => {
@@ -96,7 +97,6 @@
             }
 
             new_ad = () => {
-              console.log("dhds")
                 let next_ad= JSON.parse(localStorage.getItem('forDummyUse'));
                 this.change_Ad(next_ad)
             }
@@ -113,7 +113,7 @@
                               <div className="card-body" id="app_bg_1">
 
                               </div>
-                              <div className="card-footer text-muted">
+                              <div className="card-footer text-center text-muted ">
                                   {this.state.company_name_1}
                               </div>
                           </div>
@@ -127,8 +127,9 @@
                                 <div className="card-body" id="app_bg_2">
 
                                 </div>
-                                <div className="card-footer text-muted">
+                                <div  className="card-footer text-center text-muted ">
                                     {this.state.company_name_2}
+
                                 </div>
                             </div>
                         </a>
@@ -141,7 +142,7 @@
                                 <div className="card-body" id="app_bg_3">
 
                                 </div>
-                                <div className="card-footer text-muted">
+                                <div className=" card-footer text-muted">
                                     {this.state.company_name_3}
                                 </div>
                             </div>
