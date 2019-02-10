@@ -53,21 +53,19 @@
                 company_name: 'Company Name',
                 product_name: 'Product Name',
                 ad_link: 'https://www.google.co.in',
-                photo_link: 'https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
+                photo_link: "./image1.png"
             }
             // document.getElementById(tabName).style.backgroundImage = 'url(buttons/' + imagePrefix + '.png)';
             set_bg_img = () => {
                 // console.log(web3.version)
                 setInterval(() => {
-                    this.new_ad()
+                    this.new_ad();
+                    let alpha = 'url(' + this.state.photo_link + ')' + '';
+                    document.getElementById("app_bg").style.backgroundImage = alpha;
                 },5000)
-                setInterval(() => {
-                    let alpha = 'url(' + this.state.photo_link + ')' + ''
-                    document.getElementById("app_bg").style.backgroundImage = alpha
-                }, 1500)
-            }
+              }
             change_Ad = (ad) => {
-                let obje = ad.listOfItems[1]
+                let obje = ad.listOfItems[parseInt(Math.random()*ad.listOfItems.length)]
                 this.setState({
                     company_name:"Amazon",
                     product_name:obje["productName"],
