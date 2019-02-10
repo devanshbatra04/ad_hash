@@ -67,30 +67,37 @@
                     let gamma = 'url(' + this.state.photo_link_3 + ')' + ''
                     document.getElementById("app_bg_3").style.backgroundImage = gamma
                     this.new_ad()
-                }, 2500)
+                }, 7500)
 
             }
             change_Ad = (ad) => {
-                console.log(ad)
                 let obje = ad.listOfItems
+                let lenT = obje.length
+                if(!localStorage.getItem('iteration')) {
+                  localStorage.setItem('iteration',-1)
+                }
+                let i=localStorage.getItem('iteration')
+                i+=1;
+                localStorage.setItem('iteration',i+2)
                 this.setState({
-                    company_name_1:"Amazon",
-                    product_name_1:obje[0]["productName"],
-                    ad_link_1:obje[0]["landingPageURL"],
-                    photo_link_1:obje[0]["imgURL"],
-                    company_name_2:"Amazon",
-                    product_name_2:obje[1]["productName"],
-                    ad_link_2:obje[1]["landingPageURL"],
-                    photo_link_2:obje[1]["imgURL"],
-                    company_name_3:"Amazon",
-                    product_name_3:obje[2]["productName"],
-                    ad_link_3:obje[2]["landingPageURL"],
-                    photo_link_3:obje[2]["imgURL"]
+                    company_name_1:obje[i%lenT].provider,
+                    product_name_1:obje[i%lenT].title,
+                    ad_link_1:obje[i%lenT].landingPageURL,
+                    photo_link_1:obje[i%lenT].imageUrl,
+                    company_name_2:obje[(i+1)%lenT].provider,
+                    product_name_2:obje[(i+1)%lenT].title,
+                    ad_link_2:obje[(i+1)%lenT].landingPageURL,
+                    photo_link_2:obje[(i+1)%lenT].imageUrl,
+                    company_name_3:obje[(i+2)%lenT].provider,
+                    product_name_3:obje[(i+2)%lenT].title,
+                    ad_link_3:obje[(i+2)%lenT].landingPageURL,
+                    photo_link_3:obje[(i+2)%lenT].imageUrl
                 })
             }
 
             new_ad = () => {
-                let next_ad= JSON.parse(localStorage.getItem('browsingHistoryUser_newAd'));
+              console.log("dhds")
+                let next_ad= JSON.parse(localStorage.getItem('forDummyUse'));
                 this.change_Ad(next_ad)
             }
 
