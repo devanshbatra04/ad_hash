@@ -1,7 +1,222 @@
 import web3 from './web3';
+const address = '0x794f3bc655ecb9a583d73d5b98f7c96fd9a99cde';
+const ABI = [
+  {
+      "constant": false,
+      "inputs": [
+          {
+              "name": "website",
+              "type": "string"
+          },
+          {
+              "name": "productName",
+              "type": "string"
+          },
+          {
+              "name": "imgURL",
+              "type": "string"
+          },
+          {
+              "name": "landingPageURL",
+              "type": "string"
+          }
+      ],
+      "name": "addData",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "constant": false,
+      "inputs": [],
+      "name": "calcNextAd",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "constant": false,
+      "inputs": [],
+      "name": "getData",
+      "outputs": [
+          {
+              "components": [
+                  {
+                      "name": "website",
+                      "type": "string"
+                  },
+                  {
+                      "name": "score",
+                      "type": "uint256"
+                  },
+                  {
+                      "name": "productName",
+                      "type": "string"
+                  },
+                  {
+                      "name": "imgURL",
+                      "type": "string"
+                  },
+                  {
+                      "name": "landingPageURL",
+                      "type": "string"
+                  },
+                  {
+                      "name": "noVisits",
+                      "type": "uint256"
+                  }
+              ],
+              "name": "",
+              "type": "tuple[]"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "constant": false,
+      "inputs": [
+          {
+              "name": "index",
+              "type": "uint256"
+          }
+      ],
+      "name": "updateNode",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+  },
+  {
+      "inputs": [
+          {
+              "name": "n",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+  },
+  {
+      "constant": true,
+      "inputs": [],
+      "name": "getStructHash",
+      "outputs": [
+          {
+              "name": "",
+              "type": "bytes32"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "constant": true,
+      "inputs": [],
+      "name": "nextAd",
+      "outputs": [
+          {
+              "name": "website",
+              "type": "string"
+          },
+          {
+              "name": "score",
+              "type": "uint256"
+          },
+          {
+              "name": "productName",
+              "type": "string"
+          },
+          {
+              "name": "imgURL",
+              "type": "string"
+          },
+          {
+              "name": "landingPageURL",
+              "type": "string"
+          },
+          {
+              "name": "noVisits",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "constant": true,
+      "inputs": [
+          {
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "name": "productsViewed",
+      "outputs": [
+          {
+              "name": "website",
+              "type": "string"
+          },
+          {
+              "name": "score",
+              "type": "uint256"
+          },
+          {
+              "name": "productName",
+              "type": "string"
+          },
+          {
+              "name": "imgURL",
+              "type": "string"
+          },
+          {
+              "name": "landingPageURL",
+              "type": "string"
+          },
+          {
+              "name": "noVisits",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "constant": true,
+      "inputs": [],
+      "name": "user",
+      "outputs": [
+          {
+              "name": "",
+              "type": "address"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+  },
+  {
+      "constant": true,
+      "inputs": [],
+      "name": "userScale",
+      "outputs": [
+          {
+              "name": "",
+              "type": "uint256"
+          }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+  }
+]
 
-const address = '0x453982dd1d38784f049391785092d3ac55d4c5c5';
-
-const ABI = [{"constant":true,"inputs":[],"name":"user","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"productsViewed","outputs":[{"name":"website","type":"string"},{"name":"score","type":"uint256"},{"name":"productName","type":"string"},{"name":"imgURL","type":"string"},{"name":"landingPageURL","type":"string"},{"name":"noVisits","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"website","type":"string"},{"name":"productName","type":"string"},{"name":"imgURL","type":"string"},{"name":"landingPageURL","type":"string"}],"name":"addData","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"userScale","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"n","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
 
 export default new web3.eth.Contract(ABI, address);

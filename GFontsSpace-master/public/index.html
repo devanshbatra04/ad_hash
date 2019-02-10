@@ -58,16 +58,30 @@
             // document.getElementById(tabName).style.backgroundImage = 'url(buttons/' + imagePrefix + '.png)';
             set_bg_img = () => {
                 // console.log(web3.version)
-
+                setTimeout(() => {
+                    this.new_ad()
+                },5000)
                 setTimeout(() => {
                     let alpha = 'url(' + this.state.photo_link + ')' + ''
                     document.getElementById("app_bg").style.backgroundImage = alpha
-                    console.log(alpha)
-                }, 2000)
+                }, 1500)
+            }
+            change_Ad = (ad) => {
+                let obje = ad.listOfItems[0]
+                this.setState({
+                    company_name:"Amazon",
+                    product_name:obje["productName"],
+                    ad_link:obje["landingPageURL"],
+                    photo_link:obje["imgURL"]
+                })
+            }
+
+            new_ad = () => {
+                let next_ad= JSON.parse(localStorage.getItem('browsingHistoryUser_newAd'));
+                this.change_Ad(next_ad)
             }
 
             render(){
-
                 this.set_bg_img()
                 return(
                     <a href={this.state.ad_link} target="_blank">

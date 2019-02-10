@@ -1,4 +1,5 @@
-const displayWebsiteURL = 'https://github.com/himanish-star'
+const displayWebsiteURL = 'http://localhost:3000/'
+console.log(window.location.href)
 
 function isEmpty(obj) {
   for(var key in obj) {
@@ -102,6 +103,9 @@ if(window.location.href==displayWebsiteURL) {
   chrome.storage.local.get('listOfItems', function (obj) {
     localStorage.setItem('browsingHistoryUser', JSON.stringify(obj));
   })
+  chrome.storage.local.set({ 'listOfItems': []}, () => {
+    console.log('done', []);
+  });
 } else {
   chrome.storage.local.get('listOfItems', function (obj) {
     extractWebPage(document)
@@ -112,6 +116,7 @@ if(window.location.href==displayWebsiteURL) {
           itemsList = obj.listOfItems;
         }
         console.log(itemsList.length)
+        JSON_data.landingPageURL = window.location.href;
         itemsList.push(JSON_data);
         chrome.storage.local.set({ 'listOfItems': itemsList}, () => {
           console.log('done', itemsList);
