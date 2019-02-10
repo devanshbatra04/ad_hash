@@ -24,6 +24,9 @@ class App extends Component {
         setTimeout(async () => {
             let data = JSON.parse(localStorage.getItem('browsingHistoryUser'));
             window.a = data;
+            console.log(data.listOfItems.length==0);
+            if(data.listOfItems.length!=0)
+              localStorage.setItem('forDummyUse',localStorage.getItem('browsingHistoryUser'));
             localStorage.setItem('browsingHistoryUser', JSON.stringify({ listOfItems: [] }));
 
             await data.listOfItems.forEach(async (d) => {
