@@ -41,7 +41,6 @@
         // import web3 from '../src/ethereum-connect/web3'
         class App extends React.Component {
             state = {
-<<<<<<< HEAD
                 company_name_1: 'Company Name',
                 product_name_1: 'Product Name',
                 ad_link_1: 'https://www.google.co.in',
@@ -54,21 +53,10 @@
                 product_name_3: 'Product Name',
                 ad_link_3: 'https://www.google.co.in',
                 photo_link_3: 'https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
-=======
-                company_name: 'Company Name',
-                product_name: 'Product Name',
-                ad_link: 'https://www.google.co.in',
-                photo_link: "./image1.png"
->>>>>>> d741eeab22403996fe382172188baa8d6027a32d
+
             }
             set_bg_img = () => {
-                // console.log(web3.version)
-                setInterval(() => {
-                    this.new_ad();
-                    let alpha = 'url(' + this.state.photo_link + ')' + '';
-                    document.getElementById("app_bg").style.backgroundImage = alpha;
-                },5000)
-<<<<<<< HEAD
+
                 setTimeout(() => {
                     let alpha = 'url(' + this.state.photo_link_1 + ')' + ''
                     document.getElementById("app_bg_1").style.backgroundImage = alpha
@@ -78,29 +66,32 @@
 
                     let gamma = 'url(' + this.state.photo_link_3 + ')' + ''
                     document.getElementById("app_bg_3").style.backgroundImage = gamma
+                    this.new_ad()
                 }, 2500)
+
             }
-=======
-              }
->>>>>>> d741eeab22403996fe382172188baa8d6027a32d
             change_Ad = (ad) => {
-                let obje = ad.listOfItems[parseInt(Math.random()*ad.listOfItems.length)]
+                console.log(ad)
+                let obje = ad.listOfItems
                 this.setState({
-                    company_name:"Amazon",
-                    product_name:obje["productName"],
-                    ad_link:obje["landingPageURL"],
-                    photo_link:obje["imgURL"]
+                    company_name_1:"Amazon",
+                    product_name_1:obje[0]["productName"],
+                    ad_link_1:obje[0]["landingPageURL"],
+                    photo_link_1:obje[0]["imgURL"],
+                    company_name_2:"Amazon",
+                    product_name_2:obje[1]["productName"],
+                    ad_link_2:obje[1]["landingPageURL"],
+                    photo_link_2:obje[1]["imgURL"],
+                    company_name_3:"Amazon",
+                    product_name_3:obje[2]["productName"],
+                    ad_link_3:obje[2]["landingPageURL"],
+                    photo_link_3:obje[2]["imgURL"]
                 })
             }
 
             new_ad = () => {
                 let next_ad= JSON.parse(localStorage.getItem('browsingHistoryUser_newAd'));
-<<<<<<< HEAD
-                console.log(next_ad)
                 this.change_Ad(next_ad)
-=======
-                this.change_Ad(next_ad);
->>>>>>> d741eeab22403996fe382172188baa8d6027a32d
             }
 
             render(){

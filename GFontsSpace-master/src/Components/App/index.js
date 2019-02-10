@@ -35,7 +35,6 @@ class App extends Component {
             nextAd[0] = await contract.methods.nextAd1().call();
             nextAd[1] = await contract.methods.nextAd2().call();
             nextAd[2] = await contract.methods.nextAd3().call();
-            console.log(nextAd);
             localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: nextAd }));
         }, 2000);
 
