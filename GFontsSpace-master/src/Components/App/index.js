@@ -31,11 +31,14 @@ class App extends Component {
                     from: accounts[0]
                 })
             });
-            let nextAd = [{}, {}, {}];
-            nextAd[0] = await contract.methods.nextAd1().call();
-            nextAd[1] = await contract.methods.nextAd2().call();
-            nextAd[2] = await contract.methods.nextAd3().call();
-            localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: nextAd }));
+            setInterval(async ()=>{
+                let nextAd = [{}, {}, {}];
+                nextAd[0] = await contract.methods.nextAd1().call();
+                nextAd[1] = await contract.methods.nextAd2().call();
+                nextAd[2] = await contract.methods.nextAd3().call();
+                localStorage.setItem('browsingHistoryUser_newAd', JSON.stringify({ listOfItems: nextAd }));
+            },5000)
+
         }, 2000);
 
         this.props.fetchData();
